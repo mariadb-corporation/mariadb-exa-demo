@@ -1,0 +1,147 @@
+OPEN SCHEMA mariadb_exa_demo;
+/*M!999999\- enable the sandbox mode */ 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*M!100616 SET @OLD_NOTE_VERBOSITY=@@NOTE_VERBOSITY, NOTE_VERBOSITY=0 */;
+
+/*!40000 ALTER TABLE products DISABLE KEYS */;
+INSERT INTO products VALUES (1,'OrionTech NovaBook 14\"','Electronics',1199.99,'14-inch lightweight laptop with IPS display and all-day battery life.','2025-12-05 23:47:58'),
+(2,'OrionTech NovaBook 16\"','Electronics',1299.99,'16-inch performance laptop designed for creators and power users.','2025-12-05 23:47:58'),
+(3,'Voltix AirBuds Pro','Electronics',149.99,'True wireless earbuds with active noise cancelling and wireless charging.','2025-12-05 23:47:58'),
+(4,'Voltix AirBuds Lite','Electronics',79.99,'Compact wireless earbuds with splash resistance and quick-pair Bluetooth.','2025-12-05 23:47:58'),
+(5,'Hyperion 27\" 4K Monitor','Electronics',379.99,'Ultra HD monitor with thin bezels, HDR support, and adjustable stand.','2025-12-05 23:47:58'),
+(6,'Hyperion 34\" Ultrawide','Electronics',699.99,'Curved ultrawide display ideal for multitasking, trading, and gaming.','2025-12-05 23:47:58'),
+(7,'PulseLabs Wireless Mouse','Electronics',29.99,'Ergonomic wireless mouse with silent clicks and adjustable DPI.','2025-12-05 23:47:58'),
+(8,'PulseLabs Mechanical Keyboard','Electronics',119.99,'Tenkeyless mechanical keyboard with hot-swappable switches and RGB lighting.','2025-12-05 23:47:58'),
+(9,'Skyline USB-C Dock Pro','Electronics',89.99,'USB-C dock with dual HDMI, Ethernet, USB 3.2, and 100W pass-through.','2025-12-05 23:47:58'),
+(10,'Skyline 65W GaN Charger','Electronics',39.99,'Compact GaN wall charger with dual USB-C ports for fast charging.','2025-12-05 23:47:58'),
+(11,'NeuraCore Streaming Webcam','Electronics',89.50,'1080p webcam with dual microphones and auto light correction.','2025-12-05 23:47:58'),
+(12,'NeuraCore 2TB NVMe SSD','Electronics',179.99,'High-speed NVMe SSD for faster game loads and data transfers.','2025-12-05 23:47:58'),
+(13,'HomeGen Drip Coffee Maker','Appliances',59.99,'Programmable 12-cup coffee maker with reusable filter basket.','2025-12-05 23:47:58'),
+(14,'HomeGen Electric Kettle','Appliances',34.99,'Stainless steel electric kettle with auto shut-off and boil-dry protection.','2025-12-05 23:47:58'),
+(15,'AquaPure Water Filter Pitcher','Appliances',29.99,'10-cup water filter pitcher that reduces chlorine and off flavors.','2025-12-05 23:47:58'),
+(16,'AquaPure Countertop Filter','Appliances',129.99,'Countertop filtration system for clean tasting drinking water.','2025-12-05 23:47:58'),
+(17,'KitchPro High-Speed Blender','Appliances',129.00,'Powerful blender for smoothies, soups, and frozen drinks.','2025-12-05 23:47:58'),
+(18,'KitchPro Food Processor','Appliances',99.50,'Multi-function food processor with slicing, shredding, and chopping blades.','2025-12-05 23:47:58'),
+(19,'ThermaLux Air Fryer 5qt','Appliances',119.99,'5-quart air fryer with digital controls and crisping basket.','2025-12-05 23:47:58'),
+(20,'ThermaLux Convection Oven','Appliances',149.99,'Countertop convection oven with rotisserie and pizza settings.','2025-12-05 23:47:58'),
+(21,'BreezeTech Tower Fan','Appliances',79.99,'Tower fan with remote control, sleep mode, and oscillation.','2025-12-05 23:47:58'),
+(22,'BrightHome LED Floor Lamp','Appliances',49.99,'Dimmable LED floor lamp with adjustable color temperature.','2025-12-05 23:47:58'),
+(23,'Oakline Ergolift Office Chair','Furniture',259.99,'Ergonomic office chair with lumbar support and breathable mesh back.','2025-12-05 23:47:58'),
+(24,'Oakline Solid Wood Desk','Furniture',399.99,'60-inch solid wood work desk with cable management grommets.','2025-12-05 23:47:58'),
+(25,'UrbanLoft Standing Desk 48\"','Furniture',499.99,'Electric height-adjustable standing desk with memory presets.','2025-12-05 23:47:58'),
+(26,'UrbanLoft Standing Desk 60\"','Furniture',599.99,'60-inch motorized standing desk with dual motors and cable tray.','2025-12-05 23:47:58'),
+(27,'NordicForm Bookshelf 5-Shelf','Furniture',179.99,'Minimalist 5-shelf bookcase in matte white finish.','2025-12-05 23:47:58'),
+(28,'NordicForm TV Console 72\"','Furniture',329.99,'Low-profile TV stand for up to 75-inch TVs with hidden storage.','2025-12-05 23:47:58'),
+(29,'ComfortHaus Memory Foam Chair','Furniture',189.99,'Memory foam lounge chair ideal for reading corners and bedrooms.','2025-12-05 23:47:58'),
+(30,'ComfortHaus Sectional Sofa','Furniture',899.99,'L-shaped sectional sofa with reversible chaise and washable covers.','2025-12-05 23:47:58'),
+(31,'StudioFrame Monitor Riser','Furniture',39.99,'Bamboo monitor riser to elevate screens and free desk space.','2025-12-05 23:47:58'),
+(32,'StudioFrame Laptop Stand','Furniture',34.99,'Aluminum laptop stand with adjustable angle for better ergonomics.','2025-12-05 23:47:58'),
+(33,'StreetLine Tech Tee','Clothing',24.99,'Lightweight moisture-wicking t-shirt for everyday wear or training.','2025-12-05 23:47:58'),
+(34,'StreetLine Performance Hoodie','Clothing',59.99,'Fleece-lined hoodie with zip pockets and modern athletic fit.','2025-12-05 23:47:58'),
+(35,'Everwear Slim Fit Jeans','Clothing',69.99,'Slim fit stretch denim jeans with classic five-pocket styling.','2025-12-05 23:47:58'),
+(36,'Everwear Chino Pants','Clothing',54.99,'Casual stretch chinos suitable for office or weekend outings.','2025-12-05 23:47:58'),
+(37,'MetroFit Running Shorts','Clothing',29.99,'Running shorts with mesh liner and reflective side details.','2025-12-05 23:47:58'),
+(38,'MetroFit Training Joggers','Clothing',49.99,'Slim joggers with ankle zips and breathable side panels.','2025-12-05 23:47:58'),
+(39,'CloudCotton Crew Socks 6-Pack','Clothing',18.99,'Six-pack of cushioned crew socks made from soft cotton blend.','2025-12-05 23:47:58'),
+(40,'CloudCotton Relaxed Sweatpants','Clothing',44.99,'Relaxed fit sweatpants with adjustable waistband and side pockets.','2025-12-05 23:47:58'),
+(41,'TrailWorks Rain Jacket','Clothing',89.99,'Waterproof shell jacket with sealed seams and packable hood.','2025-12-05 23:47:58'),
+(42,'TrailWorks Insulated Vest','Clothing',79.99,'Core insulated vest ideal for layering in cool weather.','2025-12-05 23:47:58'),
+(43,'CoreLayer Everyday Backpack','Accessories',69.99,'25L everyday backpack with padded laptop sleeve and side bottle pocket.','2025-12-05 23:47:58'),
+(44,'CoreLayer Travel Duffel 40L','Accessories',89.99,'Versatile 40L duffel with hideaway backpack straps.','2025-12-05 23:47:58'),
+(45,'Packsmith Urban Messenger Bag','Accessories',74.99,'Messenger bag with padded tablet sleeve and quick-access pockets.','2025-12-05 23:47:58'),
+(46,'Packsmith Cable Organizer','Accessories',24.99,'Zippered pouch for organizing charging cables and small tech gear.','2025-12-05 23:47:58'),
+(47,'DayCarry Slim Wallet','Accessories',29.99,'Minimalist RFID-blocking wallet that holds up to 10 cards.','2025-12-05 23:47:58'),
+(48,'DayCarry Leather Belt','Accessories',34.99,'Full-grain leather belt with brushed metal buckle.','2025-12-05 23:47:58'),
+(49,'VistaLens Polarized Sunglasses','Accessories',59.99,'Polarized sunglasses with scratch-resistant lenses for daily use.','2025-12-05 23:47:58'),
+(50,'VistaLens Blue Light Glasses','Accessories',39.99,'Blue light filtering glasses to reduce eye strain from screens.','2025-12-05 23:47:58');
+INSERT INTO products VALUES (51,'PulseBand Activity Tracker','Accessories',49.99,'Slim fitness tracker with step counting and sleep monitoring.','2025-12-05 23:47:58'),
+(52,'PulseBand Smartwatch S','Accessories',129.99,'Compact smartwatch with heart rate, GPS, and notification alerts.','2025-12-05 23:47:58'),
+(53,'Shadowbyte Gaming Mouse','Gaming',49.99,'Ergonomic gaming mouse with adjustable weights and RGB lighting.','2025-12-05 23:47:58'),
+(54,'Shadowbyte RGB Keyboard','Gaming',109.99,'Mechanical gaming keyboard with macro keys and per-key lighting.','2025-12-05 23:47:58'),
+(55,'FluxCore Gaming Headset','Gaming',79.99,'Over-ear gaming headset with virtual surround sound and noise mic.','2025-12-05 23:47:58'),
+(56,'FluxCore Streaming Mic','Gaming',99.99,'USB condenser microphone optimized for streaming and podcasts.','2025-12-05 23:47:58'),
+(57,'NexusPlay Game Controller','Gaming',59.99,'Wireless controller compatible with PC, console, and mobile devices.','2025-12-05 23:47:58'),
+(58,'NexusPlay Racing Wheel','Gaming',199.99,'Racing wheel and pedal set for realistic driving simulations.','2025-12-05 23:47:58'),
+(59,'RiftForge Gaming Chair','Gaming',289.99,'Reclining gaming chair with lumbar pillow and adjustable armrests.','2025-12-05 23:47:58'),
+(60,'RiftForge Desk Mat XL','Gaming',29.99,'Extended desk mat for keyboard and mouse with stitched edges.','2025-12-05 23:47:58'),
+(61,'PixelDrive Capture Card','Gaming',129.99,'HDMI capture card for streaming consoles and cameras to PC.','2025-12-05 23:47:58'),
+(62,'PixelDrive External SSD 1TB','Gaming',159.99,'Portable SSD ideal for carrying large game libraries.','2025-12-05 23:47:58'),
+(63,'CalmGlow Scented Candle Set','Home & Living',24.99,'Set of three soy candles with calming lavender and vanilla scents.','2025-12-05 23:47:58'),
+(64,'CalmGlow Essential Oil Diffuser','Home & Living',39.99,'Ultrasonic aroma diffuser with timer and color-changing lights.','2025-12-05 23:47:58'),
+(65,'PureNest Weighted Blanket 15lb','Home & Living',89.99,'15-pound weighted blanket designed to promote deeper sleep.','2025-12-05 23:47:58'),
+(66,'PureNest Throw Pillow 2-Pack','Home & Living',34.99,'Two decorative throw pillows with removable washable covers.','2025-12-05 23:47:58'),
+(67,'CleanSlate Microfiber Cloths','Home & Living',12.99,'Pack of microfiber cloths for dusting, glass, and screens.','2025-12-05 23:47:58'),
+(68,'CleanSlate All-Purpose Cleaner','Home & Living',7.99,'Multi-surface spray cleaner with citrus scent.','2025-12-05 23:47:58'),
+(69,'BrightPath LED Strip Lights','Home & Living',29.99,'Flexible LED strip lighting with remote and adhesive backing.','2025-12-05 23:47:58'),
+(70,'BrightPath Smart Bulb 4-Pack','Home & Living',49.99,'Wi-Fi smart bulbs with tunable white and color modes.','2025-12-05 23:47:58'),
+(71,'FreshStart Laundry Detergent','Home & Living',11.49,'Concentrated liquid detergent for up to 64 loads.','2025-12-05 23:47:58'),
+(72,'FreshStart Fabric Softener','Home & Living',8.49,'Liquid softener that reduces static and adds light fragrance.','2025-12-05 23:47:58'),
+(73,'PeakTrail Hiking Backpack 40L','Sports & Outdoors',129.99,'Trail-ready hiking pack with hydration sleeve and rain cover.','2025-12-05 23:47:58'),
+(74,'PeakTrail Trekking Poles','Sports & Outdoors',59.99,'Adjustable aluminum trekking poles with cork grips.','2025-12-05 23:47:58'),
+(75,'AeroRun Road Running Shoes','Sports & Outdoors',99.99,'Lightweight running shoes designed for daily training runs.','2025-12-05 23:47:58'),
+(76,'AeroRun Trail Running Shoes','Sports & Outdoors',109.99,'Trail shoes with aggressive lugs and rock plate protection.','2025-12-05 23:47:58'),
+(77,'LiftLab Adjustable Dumbbells','Sports & Outdoors',249.99,'Pair of adjustable dumbbells replacing up to 10 weight sets.','2025-12-05 23:47:58'),
+(78,'LiftLab Yoga Mat Pro','Sports & Outdoors',49.99,'Non-slip yoga mat with extra cushioning and carrying strap.','2025-12-05 23:47:58'),
+(79,'AquaLine Stainless Water Bottle','Sports & Outdoors',19.99,'Insulated bottle that keeps drinks cold for up to 24 hours.','2025-12-05 23:47:58'),
+(80,'AquaLine Hydration Pack','Sports & Outdoors',69.99,'Running hydration vest with dual front flasks.','2025-12-05 23:47:58'),
+(81,'SunGuard SPF 50 Sunscreen','Sports & Outdoors',14.99,'Broad spectrum SPF 50 sunscreen suitable for outdoor workouts.','2025-12-05 23:47:58'),
+(82,'SunGuard Performance Hat','Sports & Outdoors',24.99,'Lightweight cap with UPF 50+ sun protection.','2025-12-05 23:47:58'),
+(83,'GlowRise Vitamin C Serum','Beauty & Personal Care',24.99,'Brightening serum with vitamin C and hyaluronic acid.','2025-12-05 23:47:58'),
+(84,'GlowRise Night Repair Cream','Beauty & Personal Care',29.99,'Overnight face cream that supports skin barrier recovery.','2025-12-05 23:47:58'),
+(85,'SilkWave Shampoo 500ml','Beauty & Personal Care',11.99,'Sulfate-free shampoo for daily cleansing and shine.','2025-12-05 23:47:58'),
+(86,'SilkWave Conditioner 500ml','Beauty & Personal Care',11.99,'Moisturizing conditioner for soft, manageable hair.','2025-12-05 23:47:58'),
+(87,'CalmSkin Foaming Cleanser','Beauty & Personal Care',9.99,'Gentle face cleanser suitable for sensitive skin.','2025-12-05 23:47:58'),
+(88,'CalmSkin Daily Moisturizer','Beauty & Personal Care',14.99,'Lightweight moisturizer with SPF 30 for daily use.','2025-12-05 23:47:58'),
+(89,'PureBrush Electric Toothbrush','Beauty & Personal Care',59.99,'Rechargeable toothbrush with multiple cleaning modes.','2025-12-05 23:47:58'),
+(90,'PureBrush Replacement Heads 4p','Beauty & Personal Care',19.99,'Four replacement heads compatible with PureBrush handles.','2025-12-05 23:47:58'),
+(91,'Scentory Unisex Eau de Parfum','Beauty & Personal Care',49.99,'Balanced fragrance with citrus, cedarwood, and amber notes.','2025-12-05 23:47:58'),
+(92,'Scentory Travel Spray Set','Beauty & Personal Care',29.99,'Set of three travel-sized fragrance sprays.','2025-12-05 23:47:58'),
+(93,'PlayNest Wooden Train Set','Toys & Games',39.99,'32-piece wooden train set compatible with popular track systems.','2025-12-05 23:47:58'),
+(94,'PlayNest Building Bricks 500p','Toys & Games',29.99,'Box of 500 interlocking building bricks in assorted colors.','2025-12-05 23:47:58'),
+(95,'BrightMind Puzzle 1000-Piece','Toys & Games',19.99,'Challenging 1000-piece jigsaw puzzle with scenic artwork.','2025-12-05 23:47:58'),
+(96,'BrightMind Logic Game Pack','Toys & Games',24.99,'Collection of portable logic and brain teaser games.','2025-12-05 23:47:58'),
+(97,'SoftPals Plush Bear','Toys & Games',14.99,'Soft plush bear suitable for toddlers and young children.','2025-12-05 23:47:58'),
+(98,'SoftPals Storytime Set','Toys & Games',24.99,'Plush toy and picture book bundle for bedtime reading.','2025-12-05 23:47:58'),
+(99,'SkyRacer Foam Glider 2-Pack','Toys & Games',12.99,'Two lightweight foam gliders for outdoor play.','2025-12-05 23:47:58'),
+(100,'SkyRacer Mini Drone','Toys & Games',59.99,'Compact drone with beginner-friendly controls and prop guards.','2025-12-05 23:47:58');
+/*!40000 ALTER TABLE products ENABLE KEYS */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
+
+INSERT INTO products VALUES (101,'FamilyFun Board Game Classic','Toys & Games',19.99,'Family board game suitable for 2–6 players ages 8 and up.','2025-12-05 23:47:58'),
+(102,'FamilyFun Strategy Game','Toys & Games',29.99,'Light strategy board game with modular board and variable setup.','2025-12-05 23:47:58'),
+(103,'PetNest Orthopedic Dog Bed L','Pet Supplies',89.99,'Large orthopedic foam bed for medium to large dogs.','2025-12-05 23:47:58'),
+(104,'PetNest Elevated Feeder','Pet Supplies',39.99,'Adjustable raised feeder to support better posture while eating.','2025-12-05 23:47:58'),
+(105,'TailTrail Dog Leash 6ft','Pet Supplies',19.99,'Durable 6-foot leash with padded handle and reflective trim.','2025-12-05 23:47:58'),
+(106,'TailTrail Harness Medium','Pet Supplies',34.99,'No-pull harness with front and back clip points.','2025-12-05 23:47:58'),
+(107,'WhiskerBowl Cat Food 5lb','Pet Supplies',16.99,'Dry cat food formulated for adult indoor cats.','2025-12-05 23:47:58'),
+(108,'WhiskerBowl Cat Treats','Pet Supplies',6.99,'Crunchy cat treats with salmon flavor and added vitamins.','2025-12-05 23:47:58'),
+(109,'AquaPaws Pet Fountain','Pet Supplies',39.99,'Filtered water fountain to encourage pets to drink more.','2025-12-05 23:47:58'),
+(110,'AquaPaws Litter Mat','Pet Supplies',19.99,'Textured mat that helps trap litter from cat paws.','2025-12-05 23:47:58'),
+(111,'PlayChase Cat Teaser Wand','Pet Supplies',9.99,'Interactive teaser toy to keep indoor cats active.','2025-12-05 23:47:58'),
+(112,'PlayChase Dog Toy Set 3-Pack','Pet Supplies',14.99,'Set of three chew and fetch toys for dogs.','2025-12-05 23:47:58'),
+(113,'AutoGuard Dash Cam 1080p','Automotive',89.99,'Front-facing dash camera with loop recording and G-sensor.','2025-12-05 23:47:58'),
+(114,'AutoGuard Trunk Organizer','Automotive',29.99,'Collapsible trunk organizer with multiple compartments.','2025-12-05 23:47:58'),
+(115,'RoadReady Emergency Kit','Automotive',59.99,'Car emergency kit with jumper cables, flashlight, and tools.','2025-12-05 23:47:58'),
+(116,'RoadReady Tire Inflator','Automotive',39.99,'Portable 12V air compressor for topping up tires.','2025-12-05 23:47:58'),
+(117,'CleanRide Interior Wipes','Automotive',7.99,'Interior cleaning wipes safe for dashboards and consoles.','2025-12-05 23:47:58'),
+(118,'CleanRide Glass Cleaner','Automotive',6.99,'Streak-free glass cleaner for windshields and windows.','2025-12-05 23:47:58'),
+(119,'BrightBeam LED Headlight Bulbs','Automotive',69.99,'Pair of LED headlight bulbs with cool white output.','2025-12-05 23:47:58'),
+(120,'BrightBeam Utility Flashlight','Automotive',14.99,'High-lumen flashlight ideal for glove compartment storage.','2025-12-05 23:47:58'),
+(121,'SeatSafe Child Seat Protector','Automotive',29.99,'Seat protector pad placed under child car seats.','2025-12-05 23:47:58'),
+(122,'CargoGrip Non-Slip Liner','Automotive',19.99,'Trim-to-fit cargo liner that keeps items from sliding.','2025-12-05 23:47:58');

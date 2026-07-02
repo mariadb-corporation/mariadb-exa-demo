@@ -1,0 +1,105 @@
+services:
+  # Express API Server
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: api
+    profiles: [application]
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=${MAXSCALE_CONTAINER_NAME}
+      - DB_PORT=${MAXSCALE_MARIADB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - PORT=3000
+    depends_on:
+      - maxscale
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # Vue.js Application (VITE_API_URL baked in at build time from PUBLIC_HOST and API_PORT)
+  vuejs-app:
+    build:
+      context: ./vuejs-app
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=http://${PUBLIC_HOST:-localhost}:${API_PORT:-3000}
+    container_name: app
+    profiles: [application]
+    ports:
+      - "8988:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  exasoldb:
+    image: ${IMAGE_EXASOL}
+    container_name: ${EXASOL_CONTAINER_NAME:-exasoldb}
+    profiles: ["db"]
+    privileged: true
+    ports:
+      - "8563:8563"
+    environment:
+      - TZ=UTC
+    volumes:
+      - ${EXASOL_DATA_MOUNT}:/exa  # host path from .env, use ./mounts/exa-data
+    restart: unless-stopped
+    networks:
+      - app-network
+    
+  mariadb:
+    image: ${IMAGE_MARIADB}
+    container_name: ${MARIADB_CONTAINER_NAME:-mariadb}
+    profiles: [db]
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - TZ=UTC
+    volumes:
+      - ${MARIADB_DATA_MOUNT}:/var/lib/mysql  # host path from .env, use ./mounts/mariadb/mariadb-data
+      - ./mounts/mariadb/my.cnf:/etc/mysql/mariadb.conf.d/999-my.cnf
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  maxscale:
+    platform: linux/amd64
+    image: ${IMAGE_MAXSCALE}
+    container_name: ${MAXSCALE_CONTAINER_NAME:-maxscale}
+    profiles: [application]
+    ports:
+      - "${MAXSCALE_MARIADB_PORT}:${MAXSCALE_MARIADB_PORT}"
+      - "${MAXSCALE_MARIADB_EXA_PORT}:${MAXSCALE_MARIADB_EXA_PORT}"
+      - "${MAXSCALE_GUI_PORT}:8989"
+      - "${MAXSCALE_EXASOL_ONLY_PORT}:${MAXSCALE_EXASOL_ONLY_PORT}"
+      - "7000:7000"  
+    restart: unless-stopped
+    networks:
+      - app-network
+    volumes:
+      - ./mounts/maxscale/maxscale.cnf:/etc/maxscale.cnf
+      - ./mounts/maxscale/sqlglot.custom.udf:/sqlglot.custom.udf
+
+networks:
+  app-network:
+    driver: bridge
+
+# HOW TO RUN:
+# 1. Copy the .env.example file to .env:
+#   cp .env.example .env
+# 2. Edit the .env file to your needs (optional):
+#   vi .env
+# 3. Start the containers:
+#   bash start.sh
+

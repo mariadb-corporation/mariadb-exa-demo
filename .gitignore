@@ -1,0 +1,6 @@
+.DS_Store
+.env
+
+# Runtime data with generated credentials - do not commit
+mounts/mariadb/mariadb-data/
+mounts/exa-data/
