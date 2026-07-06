@@ -2,9 +2,33 @@
 
 Test MariaDB Exa with sample data & users preloaded. New tables in mariadb_exa_demo will automatically use the existing CDC to be copied into exasol
 
-# Quick Start
+# Community Quick Start
+1. **Clone the repository**
+```bash
+git clone git@github.com:mariadb-corporation/mariadb-exa-demo.git
+cd mariadb-exa-demo
+```
+2. **Create an account** at https://mariadb.com/login
+3. **Generate a trial license** at https://customers.mariadb.com/license/maxscale-trial/
+4. **Paste the license key** into [`mounts/maxscale/maxscale.cnf`](https://github.com/mariadb-corporation/mariadb-exa-demo/blob/main/mounts/maxscale/maxscale.cnf)
+```bash
+sed -i "s|^#\?[[:space:]]*license_key=.*|license_key=<YOUR_TRIAL_LICENSE_KEY_HERE>|" mounts/maxscale/maxscale.cnf
+```
+4. **Start the project**
+```
+./start.sh -r
+```
+Note: `.env.example` is automatically copied as `.env` on first startup if no .env exists
 
-Clone Repo & Start up community images
+
+# Enterprise Quick Start
+Get your ENTERPRISE_TOKEN: https://customers.mariadb.com/downloads/token/ 
+
+1. **Configure access to enterprise docker registry**
+```bash
+echo "<ENTERPRISE_TOKEN>" | docker login docker.mariadb.com -u <your-mariadb-id-email> --password-stdin
+```
+2. **Clone the repository & Start the project**
 ```bash
 git clone git@github.com:mariadb-corporation/mariadb-exa-demo.git
 cd mariadb-exa-demo
@@ -12,11 +36,17 @@ cd mariadb-exa-demo
 ```
 Note: `.env.example` is automatically copied as `.env` on first startup if no .env exists
 
-To stop everything (and optionally remove volumes and data):
+# Startup, Configuration, and Connecting
 
+To start everything
+```bash
+./start.sh 
+```
+
+To stop everything (and optionally remove volumes and data):
 ```bash
 ./stop.sh        # stop only
-./stop.sh -a     # stop and remove volumes/data
+./stop.sh -r     # stop and remove volumes/data
 ```
 
 ### Configure Environment Variables 
@@ -39,15 +69,15 @@ Here are some key variables you can adjust:
 Community Trial:
 ```bash
 docker pull mariadb:11.8
-docker pull mariadb/maxscale-trial:25.10.3 
+docker pull mariadb/maxscale:25.10.3-trial
 docker pull exasol/docker-db:latest
 ```
 
 Enterprise users:
 ```bash
 echo "<ENTERPRISE_TOKEN>" | docker login docker.mariadb.com -u <your-mariadb.id-email> --password-stdin
-docker pull docker.mariadb.com/enterprise-server:latest
-docker pull docker.mariadb.com/maxscale:latest
+docker pull docker.mariadb.com/enterprise-server:11.8
+docker pull docker.mariadb.com/maxscale:25.10.3-all
 docker pull exasol/docker-db:latest
 ```
 
@@ -168,7 +198,6 @@ docker network rm demo
 │           └── RealtimeChart.vue
 ├── scripts/                    # Database and setup scripts
 │   ├── init.sh                 # Initialize MariaDB schema and data
-│   ├── prepare-maxscale-config.sh   # Generate MaxScale config from .env
 │   └── sales-simulator.sh      # Generate fake sales data
 ├── sql/                        # Database initialization and seed SQL
 │   ├── init.sql                # Schema and bootstrap

@@ -135,9 +135,32 @@ if (( MARIADB_ONLY == 1 )); then
   exit 0
 fi
 
+# The trial MaxScale image requires license_key in maxscale.cnf; other images reject it.
+# Toggle the setting based on whether the image name contains "-trial".
+MAXSCALE_CNF="$ROOT_DIR/mounts/maxscale/maxscale.cnf"
+if [[ "${IMAGE_MAXSCALE:-}" == *-trial* ]]; then
+  if grep -qE '^[[:space:]]*#[[:space:]]*license_key=' "$MAXSCALE_CNF"; then
+    echo " - Trial MaxScale image detected, un-commenting license_key in maxscale.cnf"
+    sed -i 's/^#[[:space:]]*\(license_key=.*\)/\1/' "$MAXSCALE_CNF"
+  fi;
+  
+  if grep -qE '^[[:space:]]*license_key=xxxx' "$MAXSCALE_CNF"; then
+    echo "ERROR: license_key in $MAXSCALE_CNF is still set to placeholder value 'xxxx...'"
+    echo "       Get a trial license at https://customers.mariadb.com/license/maxscale-trial/"
+    echo "       and update license_key in $MAXSCALE_CNF before continuing."
+    exit 1
+  fi
+else
+  if grep -qE '^[[:space:]]*license_key=' "$MAXSCALE_CNF"; then
+    echo " - Non-trial MaxScale image detected, commenting out license_key in maxscale.cnf"
+    sed -i 's/^\(license_key=.*\)/#\1/' "$MAXSCALE_CNF"
+  fi
+fi
+
 # Check if custom CDC_DATABASES is set and update Debezium database include list - has to be done before starting the containers
 if [[ "${CDC_DATABASES}" != "mariadb_exa_demo" ]]; then
   echo " - Updating CDC list to: ${CDC_DATABASES}"
+  # TODO: Implement maxscale-cdc limiting cdc to 1 DB
   echo "Not implemented"
   sleep 2
   #sed -i "s/^database.include.list=.*/database.include.list=${CDC_DATABASES}/g" mounts/debezium/mariadb-exa-cdc.properties
